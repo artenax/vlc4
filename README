@@ -1,5 +1,7 @@
 VLC 4.0.0-dev
 
+https://github.com/artenax/vlc4/blob/main/vlc4.png
+
 sudo apt-get build-dep vlc.src.rpm
 rpm -i vlc.src.rpm
 rpm -ba --target x86_64 ~/RPM/SPECS/vlc.spec
