@@ -2,6 +2,8 @@
 
 ![vlc4](https://github.com/artenax/vlc4/assets/107228652/0858595d-93ed-444a-877a-6c5959485a7d)
 
+## Compilation from source code
+
 sudo apt-get build-dep vlc.src.rpm   
 rpm -i vlc.src.rpm   
 rpm -ba --target x86_64 ~/RPM/SPECS/vlc.spec   
