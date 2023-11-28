@@ -1,3 +1,5 @@
+VLC 4.0.0-dev
+
 sudo apt-get build-dep vlc.src.rpm
 rpm -i vlc.src.rpm
 rpm -ba --target x86_64 ~/RPM/SPECS/vlc.spec
