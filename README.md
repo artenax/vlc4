@@ -1,35 +1,35 @@
-VLC 4.0.0-dev
+VLC 4.0.0-dev   
 
-https://github.com/artenax/vlc4/blob/main/vlc4.png
+https://github.com/artenax/vlc4/blob/main/vlc4.png   
 
-sudo apt-get build-dep vlc.src.rpm
-rpm -i vlc.src.rpm
-rpm -ba --target x86_64 ~/RPM/SPECS/vlc.spec
+sudo apt-get build-dep vlc.src.rpm   
+rpm -i vlc.src.rpm   
+rpm -ba --target x86_64 ~/RPM/SPECS/vlc.spec   
 
-sudo apt-get install libxkbcommon-x11-devel libinput-devel libfaad-devel libsndfile-devel libsqlite3-devel libbenchmark-devel
-sudo apt-get remove libxxhash-devel
+sudo apt-get install libxkbcommon-x11-devel libinput-devel libfaad-devel libsndfile-devel libsqlite3-devel libbenchmark-devel   
+sudo apt-get remove libxxhash-devel   
 
-git clone https://github.com/Cyan4973/xxHash.git
-cd xxHash
-git describe --tags | sed 's/^v//'
-make PREFIX=/opt/vlc DISPATCH=1
-sudo make PREFIX=/opt/vlc DISPATCH=1 install
+git clone https://github.com/Cyan4973/xxHash.git   
+cd xxHash   
+git describe --tags | sed 's/^v//'   
+make PREFIX=/opt/vlc DISPATCH=1   
+sudo make PREFIX=/opt/vlc DISPATCH=1 install   
 
-git clone https://code.videolan.org/videolan/medialibrary.git
-cd medialibrary
-git checkout 98e5d18e626c6c52ba59014f10d496b5c97191e9
-git submodule update --init
-mkdir -p build-dir && cd build-dir
-PKG_CONFIG_PATH=/opt/vlc/lib/pkgconfig LDFLAGS='-Wl,-rpath,/opt/vlc/lib' meson .. --prefix=/opt/vlc --libdir=lib -Dlibvlc=disabled
-ninja -j1
-sudo ninja install
+git clone https://code.videolan.org/videolan/medialibrary.git   
+cd medialibrary   
+git checkout 98e5d18e626c6c52ba59014f10d496b5c97191e9   
+git submodule update --init   
+mkdir -p build-dir && cd build-dir   
+PKG_CONFIG_PATH=/opt/vlc/lib/pkgconfig LDFLAGS='-Wl,-rpath,/opt/vlc/lib' meson .. --prefix=/opt/vlc --libdir=lib -Dlibvlc=disabled   
+ninja -j1   
+sudo ninja install   
 
-git clone https://code.videolan.org/videolan/vlc.git
-cd vlc
-./bootstrap
-PKG_CONFIG_PATH=/opt/vlc/lib/pkgconfig LDFLAGS='-Wl,-rpath,/opt/vlc/lib' ./configure --prefix=/opt/vlc --enable-silent-rules BUILDCC=gcc BUILDCXX=g++
-make -j1
-sudo make install
+git clone https://code.videolan.org/videolan/vlc.git   
+cd vlc   
+./bootstrap   
+PKG_CONFIG_PATH=/opt/vlc/lib/pkgconfig LDFLAGS='-Wl,-rpath,/opt/vlc/lib' ./configure --prefix=/opt/vlc --enable-silent-rules BUILDCC=gcc BUILDCXX=g++   
+make -j1   
+sudo make install   
 
-Exec=env XDG_DATA_DIRS=/opt/vlc/share:/usr/share /opt/vlc/bin/vlc
-Icon=/opt/vlc/share/icons/hicolor/128x128/apps/vlc.png
+Exec=env XDG_DATA_DIRS=/opt/vlc/share:/usr/share /opt/vlc/bin/vlc   
+Icon=/opt/vlc/share/icons/hicolor/128x128/apps/vlc.png   
